@@ -25,7 +25,8 @@ export class ServicioSeguridad {
     }
 
     get esAdmin2(): boolean {
-        return true;
+        let es = this.EsAdmin.getValue();
+        return this.EsAdmin.getValue();
     }
 
     get modulo(): string {
@@ -42,6 +43,7 @@ export class ServicioSeguridad {
                 
                 sessionStorage.setItem('token', res.jwt);
                 sessionStorage.setItem('role', res.user.role.name);
+                this.EsAdmin.next(res.user.role.type == "admin");
                 if(res.user.modulo) {
                     this.EncargadoModulo.next(res.user.role.type == "encargadomodulo");
                     sessionStorage.setItem('modulo', res.user.modulo.Nombre);

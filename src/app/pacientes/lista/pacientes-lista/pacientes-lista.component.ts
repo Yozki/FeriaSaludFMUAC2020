@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ServicioPacientes } from '../../../servicios/pacientes.service';
 import { Paciente } from 'src/app/modelos/paciente';
 import { ServicioSeguridad } from 'src/app/servicios/seguridad.service';
@@ -8,7 +8,9 @@ import { Modulo } from 'src/app/modelos/modulo';
 @Component({
     selector: 'app-pacientes-lista',
     templateUrl: './pacientes-lista.component.html',
-    styleUrls: ['./pacientes-lista.component.css']
+    styleUrls: ['./pacientes-lista.component.css'],
+    providers: [ServicioSeguridad],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PacientesListaComponent implements OnInit {
 
