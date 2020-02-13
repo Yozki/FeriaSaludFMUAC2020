@@ -1,0 +1,5 @@
+<header class="nav-bar">
+    <a routerLink="consultar" *ngIf="seguridad.esEncargadoModulo | async">Consultar</a>&nbsp;
+    <a routerLink="pacientes" *ngIf="seguridad.isLogged | async">Pacientes</a>
+    <a routerLink="/" (click)="Logout()" class="float-right" *ngIf="seguridad.isLogged">Salir</a>
+</header>

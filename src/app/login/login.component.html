@@ -1,0 +1,25 @@
+<div class="login-wrapper">
+    <form [formGroup]="LoginForm" class="container">
+                
+        <div class="text-center mx-auto mb-3 logo-wrapper">
+            <img class="img-fluid" alt="Polilag" src="assets/logo2.png" [width]="80">
+        </div>
+    
+        <div class="loginFormInner col-12 col-lg-8">
+            <small class="login-message">Ingreso</small>
+    
+            <div class="mt-4 my-4 col-12">
+                <input type="email" class="form-control" placeholder="mail@ejemplo.com" formControlName="identifier">
+            </div>
+        
+            <div class="my-4 col-12">
+                <input type="password" class="form-control" placeholder="Contraseña" formControlName="password" name="password" required>
+            </div>
+        
+            <div class="my-2 col-12">
+                <button (click)="login()" class="btn btn-block btn mx-auto my-2">Entrar</button>
+            </div>
+        </div>
+        
+    </form>
+</div>

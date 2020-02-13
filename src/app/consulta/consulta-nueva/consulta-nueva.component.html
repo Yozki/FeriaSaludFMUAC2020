@@ -1,0 +1,34 @@
+<div class="container mt-3 mb-5">
+
+    <form [formGroup]="consultaForm">
+        <div class="col-12">
+            <mat-form-field appearance="standard" class="d-inline">
+                <mat-label>Módulo</mat-label>
+                <input matInput placeholder="Módulo" disabled [value]="modulo">
+            </mat-form-field>
+        </div>
+    
+        <div class="col-12">
+            <mat-form-field appearance="standard" class="d-inline">
+                <mat-label>Paciente</mat-label>
+                <mat-select formControlName="Paciente">
+                    <mat-option *ngFor="let paciente of pacientes" [value]="paciente.id">
+                        {{ paciente.Nombre }}
+                    </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+    
+        <div class="col-12">
+            <mat-form-field appearance="standard" class="h-100 d-inline">
+                <mat-label>Observaciones</mat-label>
+                <textarea rows="5" matInput formControlName="Observaciones"></textarea>
+            </mat-form-field>
+        </div>
+    </form>
+
+    <nav class="navbar fixed-bottom bg-success">
+        <a [routerLink]="" (click)="GuardarConsulta()">Guardar</a>
+    </nav>
+    
+</div>

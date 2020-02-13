@@ -1,0 +1,23 @@
+<div class="container mt-3 mb-5">
+
+    <table mat-table [dataSource]="pacientes" *ngIf="modulos">
+
+        <ng-container matColumnDef="Nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let element"> {{element.Nombre}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Modulo">
+            <th mat-header-cell *matHeaderCellDef> Último Módulo </th>
+            <td mat-cell *matCellDef="let element"> {{getNombreModulo(element.consultas[element.consultas?.length - 1]?.modulo) }} </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <nav class="navbar fixed-bottom bg-success" *ngIf="seguridad.esAdmin | async">
+        <a href="pacientes/nuevo">Nuevo</a>
+    </nav>
+
+</div>

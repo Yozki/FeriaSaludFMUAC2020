@@ -1,0 +1,37 @@
+.login-wrapper {
+    background: rgb(28,63,119);
+    background: linear-gradient(90deg, rgba(28,63,119,1) 35%, rgba(28,70,119,1) 100%);
+    height: 100%;
+}
+
+.logo-wrapper {
+    padding: 40px;
+    padding-top: 70px;
+}
+
+.logo-wrapper img {
+    width: 100%;
+    max-width: 300px;
+}
+
+.loginFormInner {
+    background-color: white;
+    overflow: auto;
+    border-radius: 10px;
+    padding: 40px 20px;
+    text-align: center;
+    margin: auto;
+}
+
+.login-message {
+    text-align: center!important;
+    font-size: 26px;
+    color: #1c3f77;
+    font-weight: lighter;
+}
+
+.loginFormInner button {
+    background: #1c3f77;
+    color: white;
+    font-size: 18px;
+}
