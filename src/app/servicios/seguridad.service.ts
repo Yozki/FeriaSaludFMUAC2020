@@ -24,6 +24,10 @@ export class ServicioSeguridad {
         return this.EsAdmin.asObservable();
     }
 
+    get esAdmin2(): boolean {
+        return true;
+    }
+
     get modulo(): string {
         return sessionStorage.getItem('modulo');
     }
@@ -35,12 +39,16 @@ export class ServicioSeguridad {
             res => {
                 this.Logged.next(true);
                 this.User = res.user;
-                this.EncargadoModulo.next(res.user.role.type == "encargadomodulo");
+                
                 sessionStorage.setItem('token', res.jwt);
                 sessionStorage.setItem('role', res.user.role.name);
                 if(res.user.modulo) {
+                    this.EncargadoModulo.next(res.user.role.type == "encargadomodulo");
                     sessionStorage.setItem('modulo', res.user.modulo.Nombre);
                     sessionStorage.setItem('moduloID', res.user.modulo.id.toString());
+                }
+                else {
+                    this.EncargadoModulo.next(false);
                 }
                 
             },
