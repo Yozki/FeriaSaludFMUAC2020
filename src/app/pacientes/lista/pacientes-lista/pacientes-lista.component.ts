@@ -9,8 +9,7 @@ import { Modulo } from 'src/app/modelos/modulo';
     selector: 'app-pacientes-lista',
     templateUrl: './pacientes-lista.component.html',
     styleUrls: ['./pacientes-lista.component.css'],
-    providers: [ServicioSeguridad],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    providers: [ServicioSeguridad]
 })
 export class PacientesListaComponent implements OnInit {
 
