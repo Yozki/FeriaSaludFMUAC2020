@@ -7,7 +7,7 @@ import { AuthGuard } from '../guards/auth.guard';
 export const routes: Routes = [
     { path: '', component: PacientesListaComponent },
     { path: 'lista', component: PacientesListaComponent },
-    { path: 'nuevo', component: PacienteNuevoComponent, canActivate: [AuthGuard]}
+    { path: 'nuevo', component: PacienteNuevoComponent }
 ]
 
 export const routing: ModuleWithProviders = RouterModule.forChild(routes);
