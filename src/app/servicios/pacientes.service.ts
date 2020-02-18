@@ -17,6 +17,10 @@ export class ServicioPacientes {
 
     constructor(private http: HttpClient) {}
 
+    GetPaciente = (ID: number): Observable<Paciente> => {
+        return this.http.get<Paciente>(environment.backEndUrl + "pacientes/" + ID);
+    }
+
     GetPacientes = (): Observable<Paciente[]> => {
         return this.http.get<Paciente[]>(environment.backEndUrl + "pacientes", this.httpOptions);
     }

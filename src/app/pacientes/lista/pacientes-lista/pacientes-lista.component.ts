@@ -13,7 +13,7 @@ import { Modulo } from 'src/app/modelos/modulo';
 })
 export class PacientesListaComponent implements OnInit {
 
-    displayedColumns: string[] = ['Nombre', 'Modulo'];
+    displayedColumns: string[] = ['ID', 'Nombre', 'Modulo'];
     pacientes: Paciente[];
     modulos: Modulo[];
 

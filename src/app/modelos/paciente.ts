@@ -1,5 +1,5 @@
 export class Paciente {
-    ID: number;
+    id: number;
     Nombre: string;
     Consultas: any[];
 }

@@ -4,6 +4,7 @@ import { Paciente } from 'src/app/modelos/paciente';
 import { ServicioPacientes } from 'src/app/servicios/pacientes.service';
 import { ServicioConsultas } from 'src/app/servicios/consultas.servicio';
 import { Router } from '@angular/router';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
     selector: 'app-consulta-nueva',
@@ -14,7 +15,7 @@ export class ConsultaNuevaComponent implements OnInit {
 
     modulo: string = '';
     consultaForm: FormGroup;
-    pacientes: Paciente[];
+    paciente: Paciente;
     consultas: number[];
 
     constructor(
@@ -24,20 +25,40 @@ export class ConsultaNuevaComponent implements OnInit {
         private router: Router
     ) {
         this.consultaForm = this.formBuild.group({
-            Paciente: '',
+            PacienteID: '',
+            Nombre: '',
             Observaciones: ''
         });
     }
 
     ngOnInit() {
         this.modulo = sessionStorage.getItem('modulo');
-        this.servicioPacientes.GetPacientes().subscribe(
-            p => this.pacientes = p
-        )
+        this.onChanges();
+    }
+
+    onChanges = () => {
+        // Cuando cambian el folio
+        this.consultaForm.get('PacienteID').valueChanges.pipe(
+            debounceTime(800),
+            distinctUntilChanged()
+          ).subscribe(val => {
+            this.servicioPacientes.GetPaciente(val).subscribe(paciente => {
+                this.paciente = paciente;
+                this.consultaForm.patchValue({
+                    PacienteID: paciente.id,
+                    Nombre: paciente.Nombre,
+                    Observaciones: ''
+                });
+            },
+            () => {
+                alert("Paciente con folio " + val + " no encontrado");
+            });
+        });
+
     }
 
     GuardarConsulta = () => {
-        let pacienteID = this.consultaForm.get("Paciente").value;
+        let pacienteID = this.consultaForm.get("PacienteID").value;
         let moduloID = sessionStorage.getItem('moduloID');
         let observaciones = this.consultaForm.get("Observaciones").value;
 
