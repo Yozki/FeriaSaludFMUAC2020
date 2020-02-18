@@ -26,7 +26,7 @@ export class ConsultaNuevaComponent implements OnInit {
     ) {
         this.consultaForm = this.formBuild.group({
             PacienteID: '',
-            Nombre: '',
+            Nombre: [{value: '', disabled: true}],
             Observaciones: ''
         });
     }
