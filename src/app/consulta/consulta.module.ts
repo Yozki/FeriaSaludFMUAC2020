@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { routing } from './consulta.routing';
 import { ConsultaNuevaComponent } from './consulta-nueva/consulta-nueva.component';
-import { MatTableModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { MatTableModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDialogModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DialogoComponent } from '../shared/dialogo/dialogo.component';
 
 @NgModule({
     declarations: [
-        ConsultaNuevaComponent
+        ConsultaNuevaComponent,
+        DialogoComponent
     ],
     imports: [
         CommonModule,
@@ -17,7 +19,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         MatInputModule,
         FormsModule,
         ReactiveFormsModule,
-        MatSelectModule
-    ]
+        MatSelectModule,
+        MatDialogModule
+    ],
+    entryComponents: [DialogoComponent]
 })
 export class ConsultaModule { }

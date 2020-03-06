@@ -5,6 +5,8 @@ import { ServicioPacientes } from 'src/app/servicios/pacientes.service';
 import { ServicioConsultas } from 'src/app/servicios/consultas.servicio';
 import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { MatDialog } from '@angular/material';
+import { DialogoComponent } from 'src/app/shared/dialogo/dialogo.component';
 
 @Component({
     selector: 'app-consulta-nueva',
@@ -12,6 +14,9 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
     styleUrls: ['./consulta-nueva.component.css']
 })
 export class ConsultaNuevaComponent implements OnInit {
+
+    animal: string;
+    name: string;
 
     modulo: string = '';
     consultaForm: FormGroup;
@@ -22,7 +27,8 @@ export class ConsultaNuevaComponent implements OnInit {
         private formBuild: FormBuilder,
         private servicioPacientes: ServicioPacientes,
         private servicioConsultas: ServicioConsultas,
-        private router: Router
+        private router: Router,
+        public dialog: MatDialog
     ) {
         this.consultaForm = this.formBuild.group({
             PacienteID: '',
@@ -42,17 +48,23 @@ export class ConsultaNuevaComponent implements OnInit {
             debounceTime(800),
             distinctUntilChanged()
           ).subscribe(val => {
-            this.servicioPacientes.GetPaciente(val).subscribe(paciente => {
-                this.paciente = paciente;
-                this.consultaForm.patchValue({
-                    PacienteID: paciente.id,
-                    Nombre: paciente.Nombre,
-                    Observaciones: ''
-                });
-            },
-            () => {
-                alert("Paciente con folio " + val + " no encontrado");
-            });
+              if(val) {
+                    this.servicioPacientes.GetPaciente(val).subscribe(paciente => {
+                        this.paciente = paciente;
+                        this.consultaForm.patchValue({
+                            PacienteID: paciente.id,
+                            Nombre: paciente.Nombre,
+                            Observaciones: ''
+                        });
+                    },
+                    () => {
+                        this.dialog.open(DialogoComponent, {
+                            width: '350px',
+                            data: 'El paciente con identificador ' + this.consultaForm.get('PacienteID').value + ' no existe'
+                        });
+                        this.consultaForm.get("PacienteID").reset();
+                    });
+              }
         });
 
     }
