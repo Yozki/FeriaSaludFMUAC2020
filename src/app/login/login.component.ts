@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
             res => {
                 if (res) this.router.navigate(['/pacientes/lista']);
                 else {
-                    console.log("ewr");
                     this.ErrorLogin = true;
                 }
             }
