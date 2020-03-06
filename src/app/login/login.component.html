@@ -19,6 +19,10 @@
             <div class="my-2 col-12">
                 <button type="button" (click)="login()" class="btn btn-block btn mx-auto my-2">Entrar</button>
             </div>
+
+            <div *ngIf="ErrorLogin">
+                <div class="text-danger">Credenciales erroneas. Intente de nuevo</div>
+            </div>
         </div>
         
     </form>

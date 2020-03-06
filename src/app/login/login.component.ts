@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
     LoginForm: FormGroup;
+    ErrorLogin: boolean;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -31,6 +32,10 @@ export class LoginComponent implements OnInit {
         this.seguridad.Login(this.LoginForm.value).subscribe(
             res => {
                 if (res) this.router.navigate(['/pacientes/lista']);
+                else {
+                    console.log("ewr");
+                    this.ErrorLogin = true;
+                }
             }
         );
     }
