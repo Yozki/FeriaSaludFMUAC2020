@@ -7,11 +7,13 @@ import { ServicioPacientes } from '../servicios/pacientes.service';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
 import { PacienteNuevoComponent } from './paciente-nuevo/paciente-nuevo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PerfilComponent } from './perfil/perfil.component';
 
 @NgModule({
     declarations: [
         PacientesListaComponent,
-        PacienteNuevoComponent
+        PacienteNuevoComponent,
+        PerfilComponent
     ],
     imports: [
         CommonModule,

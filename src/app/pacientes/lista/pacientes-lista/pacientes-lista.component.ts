@@ -4,6 +4,7 @@ import { Paciente } from 'src/app/modelos/paciente';
 import { ServicioSeguridad } from 'src/app/servicios/seguridad.service';
 import { ServicioModulos } from 'src/app/servicios/modulos.service';
 import { Modulo } from 'src/app/modelos/modulo';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-pacientes-lista',
@@ -20,7 +21,8 @@ export class PacientesListaComponent implements OnInit {
     constructor(
         private servicioPacientes: ServicioPacientes,
         public seguridad: ServicioSeguridad,
-        private servicioModulos: ServicioModulos
+        private servicioModulos: ServicioModulos,
+        private router: Router
     ) {
         
     }
@@ -42,5 +44,11 @@ export class PacientesListaComponent implements OnInit {
             return this.modulos.find(m => m.id == moduloID).Nombre;
         }
         else return '';
+    }
+
+    selectRow = (paciente) => {
+        if (this.seguridad.esAdmin2) {
+            this.router.navigate(['/pacientes/' + paciente.id]);
+        }
     }
 }

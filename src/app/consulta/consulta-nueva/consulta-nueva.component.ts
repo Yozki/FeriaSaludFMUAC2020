@@ -15,9 +15,6 @@ import { DialogoComponent } from 'src/app/shared/dialogo/dialogo.component';
 })
 export class ConsultaNuevaComponent implements OnInit {
 
-    animal: string;
-    name: string;
-
     modulo: string = '';
     consultaForm: FormGroup;
     paciente: Paciente;
@@ -33,7 +30,12 @@ export class ConsultaNuevaComponent implements OnInit {
         this.consultaForm = this.formBuild.group({
             PacienteID: '',
             Nombre: [{value: '', disabled: true}],
-            Observaciones: ''
+            Observaciones: '',
+            Peso: '',
+            Talla: '',
+            FreqCardiaca: '',
+            FreqRespiratoria: '',
+            PresionArterial: ''
         });
     }
 
@@ -66,18 +68,27 @@ export class ConsultaNuevaComponent implements OnInit {
                     });
               }
         });
-
     }
 
     GuardarConsulta = () => {
         let pacienteID = this.consultaForm.get("PacienteID").value;
         let moduloID = sessionStorage.getItem('moduloID');
         let observaciones = this.consultaForm.get("Observaciones").value;
+        let Peso = this.consultaForm.get("Peso").value;
+        let Talla = this.consultaForm.get("Talla").value;
+        let FreqCardiaca = this.consultaForm.get("FreqCardiaca").value;
+        let FreqRespiratoria = this.consultaForm.get("FreqRespiratoria").value;
+        let PresionArterial = this.consultaForm.get("PresionArterial").value;
 
         this.servicioPacientes.GetIDConsultas(pacienteID).subscribe(
             res => {
                 this.consultas = res;
-                this.servicioConsultas.NuevaConsulta(+moduloID, observaciones).subscribe(
+                this.servicioConsultas.NuevaConsulta(
+                    +moduloID, 
+                    observaciones,
+                    Peso, Talla, FreqCardiaca,
+                    FreqRespiratoria, PresionArterial)
+                    .subscribe(
                     id => {
                         this.consultas.push(id);
                         this.servicioPacientes.UpdatePaciente(pacienteID, this.consultas).subscribe(

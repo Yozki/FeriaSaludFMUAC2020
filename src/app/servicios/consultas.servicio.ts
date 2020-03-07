@@ -16,10 +16,15 @@ export class ServicioConsultas {
 
     constructor(private http: HttpClient) {}
 
-    NuevaConsulta = (moduloID: number, observaciones: string): Observable<number> => {
+    NuevaConsulta = (moduloID: number, observaciones: string,
+        Peso: string, Talla: string, FreqCardiaca: string,
+        FreqRespiratoria: string, PresionArterial: string): Observable<number> => {
         let body = {
             Observaciones: observaciones,
-            modulo: moduloID
+            modulo: moduloID,
+            Peso, Talla, FrecuenciaCardiaca: FreqCardiaca, 
+            FrecuenciaRespiratoria: FreqRespiratoria, 
+            PresionArterial
         };
         return this.http.post<any>(environment.backEndUrl + 'consultas', body, this.httpOptions).pipe(
             map(r => r.id)
