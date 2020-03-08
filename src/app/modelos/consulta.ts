@@ -3,8 +3,8 @@ export class Consulta {
     Observaciones: string;
     Peso: string;
     Talla: string;
-    FreqCardiaca: string;
-    FreqRespiratoria: string;
+    FrecuenciaCardiaca: string;
+    FrecuenciaRespiratoria: string;
     PresionArterial: string;
     modulo: number;
     created_at: Date;
