@@ -34,9 +34,33 @@
                             <div class="col-5 text-right">Frec. Respiratoria</div>
                             <div class="col-7">{{ element.FrecuenciaRespiratoria }}</div>
                         </div>
+                    </div>
+
+                    <!-- SIGNOS VITALES / METABÓLICO -->
+                    <div *ngIf="nombreModulo(element.modulo) == 'Signos Vitales' || nombreModulo(element.modulo) == 'Metabolico'" class="col-12">
                         <div class="row">
                             <div class="col-5 text-right">Presión arterial</div>
                             <div class="col-7">{{ element.PresionArterial }}</div>
+                        </div>
+                    </div>
+
+                    <!-- UROLOGIA -->
+                    <div *ngIf="nombreModulo(element.modulo) == 'Urologia'" class="col-12">
+                        <div class="row">
+                            <div class="col-5 text-right">PSA</div>
+                            <div class="col-7">{{ element.PSA }} ng/ml</div>
+                        </div>
+                    </div>
+
+                    <!-- DETECCIONES / METABÓLICO -->
+                    <div *ngIf="nombreModulo(element.modulo) == 'Detecciones' || nombreModulo(element.modulo) == 'Metabolico'" class="col-12">
+                        <div class="row">
+                            <div class="col-5 text-right">Glucosa</div>
+                            <div class="col-7">{{ element.Glucosa }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5 text-right">ABO</div>
+                            <div class="col-7">{{ element.ABO }}</div>
                         </div>
                     </div>
                     <div class="col-12 pb-2">

@@ -35,7 +35,10 @@ export class ConsultaNuevaComponent implements OnInit {
             Talla: '',
             FreqCardiaca: '',
             FreqRespiratoria: '',
-            PresionArterial: ''
+            PresionArterial: '',
+            Glucosa: '',
+            ABO: '',
+            PSA: ''
         });
     }
 
@@ -79,6 +82,9 @@ export class ConsultaNuevaComponent implements OnInit {
         let FreqCardiaca = this.consultaForm.get("FreqCardiaca").value;
         let FreqRespiratoria = this.consultaForm.get("FreqRespiratoria").value;
         let PresionArterial = this.consultaForm.get("PresionArterial").value;
+        let Glucosa = this.consultaForm.get("Glucosa").value;
+        let ABO = this.consultaForm.get("ABO").value;
+        let PSA = this.consultaForm.get("PSA").value;
 
         this.servicioPacientes.GetIDConsultas(pacienteID).subscribe(
             res => {
@@ -87,7 +93,8 @@ export class ConsultaNuevaComponent implements OnInit {
                     +moduloID, 
                     observaciones,
                     Peso, Talla, FreqCardiaca,
-                    FreqRespiratoria, PresionArterial)
+                    FreqRespiratoria, PresionArterial,
+                    Glucosa, ABO, PSA)
                     .subscribe(
                     id => {
                         this.consultas.push(id);

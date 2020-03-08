@@ -26,6 +26,7 @@
             </div>
         </div>
         
+        <!-- SIGNOS VITALES -->
         <div class="col-12" *ngIf="modulo == 'Signos Vitales'">
             <div class="row">
                 <div class="col-6">
@@ -35,7 +36,7 @@
                     </mat-form-field>
                 </div>
         
-                <div class="col-6" *ngIf="modulo == 'Signos Vitales'">
+                <div class="col-6">
                     <mat-form-field appearance="standard" class="d-inline">
                         <mat-label>Talla</mat-label>
                         <input matInput formControlName="Talla" placeholder="3">
@@ -44,6 +45,7 @@
             </div>
         </div>
 
+        <!-- SIGNOS VITALES -->
         <div class="col-12" *ngIf="modulo == 'Signos Vitales'">
             <div class="row">
                 <div class="col-6">
@@ -59,11 +61,48 @@
                         <input matInput formControlName="FreqRespiratoria" placeholder="80">
                     </mat-form-field>
                 </div>
+            </div>
+        </div>
 
+        <!-- DETECCIONES / METABÓLICO -->
+        <div class="col-12" *ngIf="modulo == 'Detecciones' || modulo == 'Metabolico'">
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field appearance="standard" class="d-inline">
+                        <mat-label>Glucosa</mat-label>
+                        <input matInput formControlName="Glucosa" placeholder="100">
+                    </mat-form-field>
+                </div>
+        
+                <div class="col-6">
+                    <mat-form-field appearance="standard" class="d-inline">
+                        <mat-label>ABO</mat-label>
+                        <input matInput formControlName="ABO" placeholder="AB">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIGNOS VITALES / METABOLICO -->
+        <div class="col-12" *ngIf="modulo == 'Signos Vitales' || modulo == 'Metabolico'">
+            <div class="row">
                 <div class="col-6">
                     <mat-form-field appearance="standard" class="d-inline">
                         <mat-label>Presión arterial</mat-label>
                         <input matInput formControlName="PresionArterial" placeholder="80">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <!-- UROLOGIA -->
+        <div class="col-12" *ngIf="modulo == 'Urologia'">
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field appearance="standard" class="d-inline">
+                        <mat-label>PSA</mat-label>
+                        <input matInput formControlName="PSA" placeholder="15">
+                        <span matSuffix>ng/ml</span>
                     </mat-form-field>
                 </div>
             </div>

@@ -18,13 +18,14 @@ export class ServicioConsultas {
 
     NuevaConsulta = (moduloID: number, observaciones: string,
         Peso: string, Talla: string, FreqCardiaca: string,
-        FreqRespiratoria: string, PresionArterial: string): Observable<number> => {
+        FreqRespiratoria: string, PresionArterial: string,
+        Glucosa: string, ABO: string, PSA: number): Observable<number> => {
         let body = {
             Observaciones: observaciones,
             modulo: moduloID,
             Peso, Talla, FrecuenciaCardiaca: FreqCardiaca, 
             FrecuenciaRespiratoria: FreqRespiratoria, 
-            PresionArterial
+            PresionArterial, Glucosa, ABO, PSA
         };
         return this.http.post<any>(environment.backEndUrl + 'consultas', body, this.httpOptions).pipe(
             map(r => r.id)
