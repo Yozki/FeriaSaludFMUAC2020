@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    backEndUrl: 'https://secure-citadel-98160.herokuapp.com/'
+    backEndUrl: 'https://fierce-forest-27790.herokuapp.com/'
 };
