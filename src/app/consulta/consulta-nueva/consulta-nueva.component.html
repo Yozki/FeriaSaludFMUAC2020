@@ -108,8 +108,16 @@
             </div>
         </div>
 
-        <div class="col-12 mt-3">
+        <!-- GINECOLOGIA / UROLOGIA / MEDICINA GENERAL / MEDICINA INTERNA -->
+        <div class="col-12 mt-3" *ngIf="modulo == 'Medicina General' || modulo == 'Medicina Interna' || modulo == 'Ginecologia' || modulo == 'Urologia'">
             <div class="mb-3">Estudios:</div>
+        </div>
+
+        <!-- GINECOLOGIA / UROLOGIA -->
+        <div class="col-12" *ngIf="modulo == 'Ginecologia' || modulo == 'Urologia'">
+            <div class="row">
+                <mat-checkbox class="col-12" formControlName="AM_EGO" >EGO</mat-checkbox>
+            </div>
         </div>
 
          <!-- MEDICINA GENERAL / MEDICINA INTERNA -->

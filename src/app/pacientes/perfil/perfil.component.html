@@ -71,6 +71,16 @@
                         </div>
                     </div>
 
+                    <!-- GINECOLOGIA / UROLOGIA -->
+                    <div *ngIf="nombreModulo(element.modulo) == 'Ginecologia' || nombreModulo(element.modulo) == 'Urologia'" class="col-12">
+                        <div class="row">
+                            <div class="col-5 text-right">Analisis solicitados</div>
+                            <ul class="col-7">
+                                <li *ngIf="element.AM_EGO">EGO</li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <!-- MEDICINA GENERAL / MEDICINA INTERNA -->
                     <div *ngIf="nombreModulo(element.modulo) == 'Medicina General' || nombreModulo(element.modulo) == 'Medicina Interna'" class="col-12">
                         <div class="row">
