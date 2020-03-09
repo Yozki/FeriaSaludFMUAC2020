@@ -24,6 +24,7 @@ export class PerfilComponent implements OnInit {
     consultas: Consulta[];
     modulos: Modulo[];
     expandedElement: Consulta | null;
+    analisisMedicos: string[];
 
     constructor(
         private route: ActivatedRoute,

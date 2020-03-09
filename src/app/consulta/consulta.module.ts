@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { routing } from './consulta.routing';
 import { ConsultaNuevaComponent } from './consulta-nueva/consulta-nueva.component';
-import { MatTableModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDialogModule, MatIconModule } from '@angular/material';
+import { MatTableModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDialogModule, MatIconModule, MatCheckboxModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogoComponent } from '../shared/dialogo/dialogo.component';
 
@@ -21,7 +21,8 @@ import { DialogoComponent } from '../shared/dialogo/dialogo.component';
         ReactiveFormsModule,
         MatSelectModule,
         MatDialogModule,
-        MatIconModule
+        MatIconModule,
+        MatCheckboxModule
     ],
     entryComponents: [DialogoComponent]
 })
