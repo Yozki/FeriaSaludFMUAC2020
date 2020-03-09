@@ -94,6 +94,18 @@
                         </div>
                     </div>
 
+                    <!-- SCORA -->
+                    <div *ngIf="nombreModulo(element.modulo) == 'SCORA'" class="col-12">
+                        <div class="row">
+                            <div class="col-5 text-right">VIH</div>
+                            <div class="col-7">{{ booleanoAEspanol(element.VIH) }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5 text-right">Sífilis</div>
+                            <div class="col-7">{{ booleanoAEspanol(element.Sifilis) }}</div>
+                        </div>
+                    </div>
+
                 </div>
             </td>
         </ng-container>

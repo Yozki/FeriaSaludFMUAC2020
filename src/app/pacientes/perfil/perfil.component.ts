@@ -61,4 +61,9 @@ export class PerfilComponent implements OnInit {
             }
         )
     }
+
+    booleanoAEspanol = (val: boolean) => {
+        if (val) return 'Positivo'
+        else return 'Negativo';
+    }
 }

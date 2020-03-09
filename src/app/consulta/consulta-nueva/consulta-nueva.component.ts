@@ -39,11 +39,12 @@ export class ConsultaNuevaComponent implements OnInit {
             Glucosa: '',
             ABO: '',
             PSA: null,
-            // Analisis médicos
             AM_BiometriaHematica: false,
             AM_EGO: false,
             AM_QuimicaSanguinea: false,
-            AM_TeleTorax: false
+            AM_TeleTorax: false,
+            VIH: false,
+            Sifilis: false
         });
     }
 
@@ -90,6 +91,8 @@ export class ConsultaNuevaComponent implements OnInit {
         let Glucosa = this.consultaForm.get("Glucosa").value;
         let ABO = this.consultaForm.get("ABO").value;
         let PSA = this.consultaForm.get("PSA").value;
+        let VIH = this.consultaForm.get("VIH").value;
+        let Sifilis = this.consultaForm.get("Sifilis").value;
 
         // Análisis médicos
         let AM_BiometriaHematica = this.consultaForm.get("AM_BiometriaHematica").value;
@@ -106,7 +109,8 @@ export class ConsultaNuevaComponent implements OnInit {
                     Peso, Talla, FreqCardiaca,
                     FreqRespiratoria, PresionArterial,
                     Glucosa, ABO, PSA, AM_BiometriaHematica, 
-                    AM_EGO, AM_QuimicaSanguinea, AM_TeleTorax)
+                    AM_EGO, AM_QuimicaSanguinea, AM_TeleTorax,
+                    VIH, Sifilis)
                     .subscribe(
                     id => {
                         this.consultas.push(id);

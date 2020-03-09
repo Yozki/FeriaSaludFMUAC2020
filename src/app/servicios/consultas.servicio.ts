@@ -20,14 +20,16 @@ export class ServicioConsultas {
         Peso: string, Talla: string, FreqCardiaca: string,
         FreqRespiratoria: string, PresionArterial: string,
         Glucosa: string, ABO: string, PSA: number, AM_BiometriaHematica: boolean,
-        AM_EGO: boolean, AM_QuimicaSanguinea: boolean, AM_TeleTorax: boolean): Observable<number> => {
+        AM_EGO: boolean, AM_QuimicaSanguinea: boolean, AM_TeleTorax: boolean,
+        VIH: boolean, Sifilis: boolean): Observable<number> => {
         let body = {
             Observaciones: observaciones,
             modulo: moduloID,
             Peso, Talla, FrecuenciaCardiaca: FreqCardiaca, 
             FrecuenciaRespiratoria: FreqRespiratoria, 
             PresionArterial, Glucosa, ABO, PSA, AM_BiometriaHematica,
-            AM_EGO, AM_QuimicaSanguinea, AM_TeleTorax
+            AM_EGO, AM_QuimicaSanguinea, AM_TeleTorax,
+            VIH, Sifilis
         };
         return this.http.post<any>(environment.backEndUrl + 'consultas', body, this.httpOptions).pipe(
             map(r => r.id)
